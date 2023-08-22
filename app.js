@@ -69,6 +69,6 @@ console.log(process.env.NODE_ENV); // express.js use it as default to detrermine
 sequelize
   .sync()
   .then((result) => {
-    app.listen(process.env.PORT || 3001);
+    app.listen(process.env.PORT || 3000);
   })
   .catch((err) => console.log(err));
