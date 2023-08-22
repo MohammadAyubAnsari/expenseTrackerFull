@@ -14,7 +14,7 @@ async function signup(event) {
     document.getElementById("phno").value = "";
 
     const response = await axios.post(
-      "http://43.205.212.2:3000/user/signup",
+      "http://43.205.212.2:3001/user/signup",
       signupDetails
     );
     if (response.status === 201) {
