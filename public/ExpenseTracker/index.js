@@ -26,7 +26,7 @@ form.addEventListener("submit", async function (event) {
 
   try {
     const response = await axios.post(
-      "http://43.205.212.2:3001/expense/add-expense",
+      "http://35.154.205.244:3000/expense/add-expense",
       myObj,
       { headers: { Authorization: token } }
     );
@@ -52,7 +52,7 @@ function addNewExpensetoUI(expense) {
 //deleteUser
 async function deleteExpense(expenseid) {
   const response = await axios.delete(
-    `http://43.205.212.2:3001/expense/delete-expense/${expenseid}`,
+    `http://35.154.205.244:3000/expense/delete-expense/${expenseid}`,
     { headers: { Authorization: token } }
   );
   console.log(response);
@@ -116,7 +116,7 @@ function getExpenses(page) {
   console.log("ItemPerPage  is : ", `${ItemPerPage}`);
   axios
     .get(
-      `http://43.205.212.2:3001/expense/get-expense?page=${page}&itemPerPage=${ItemPerPage}`,
+      `http://35.154.205.244:3000/expense/get-expense?page=${page}&itemPerPage=${ItemPerPage}`,
       { headers: { Authorization: token } }
     )
     .then((response) => {
@@ -136,7 +136,7 @@ function getExpenses(page) {
 window.addEventListener("load", async () => {
   const page = 1;
   const response = await axios.get(
-    `http://43.205.212.2:3001/expense/get-expense?page=${page}&itemPerPage=${ItemPerPage}`,
+    `http://35.154.205.244:3000/expense/get-expense?page=${page}&itemPerPage=${ItemPerPage}`,
     { headers: { Authorization: token } }
   );
 
@@ -173,7 +173,7 @@ function showListOfUrl(url) {
 
 function download() {
   axios
-    .get("http://43.205.212.2:3001/expense/download", {
+    .get("http://35.154.205.244:3000/expense/download", {
       headers: { Authorization: token },
     })
     .then((response) => {
@@ -195,7 +195,7 @@ function download() {
 
 function showUrlTable() {
   axios
-    .get(`http://43.205.212.2:3001/expense/urlTable`, {
+    .get(`http://35.154.205.244:3000/expense/urlTable`, {
       headers: { Authorization: token },
     })
     .then((response) => {
@@ -215,7 +215,7 @@ function showUrlTable() {
 
 async function showPremiumFeatures() {
   const response = await axios.get(
-    `http://43.205.212.2:3001/premium/showLeaderBoard`,
+    `http://35.154.205.244:3000/premium/showLeaderBoard`,
     { headers: { Authorization: token } }
   );
   document.getElementById("Leaderboard").innerHTML = "";
@@ -229,7 +229,7 @@ async function showPremiumFeatures() {
 
 document.getElementById("rzp-button1").onclick = async function (e) {
   const response = await axios.get(
-    "http://43.205.212.2:3001/purchase/premiummembership",
+    "http://35.154.205.244:3000/purchase/premiummembership",
     { headers: { Authorization: token } }
   );
   console.log(response);
@@ -239,7 +239,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
     // this handler function will handle the success payment
     handler: async function (response) {
       await axios.post(
-        "http://43.205.212.2:3001/purchase/updatetransactionstatusSuccess",
+        "http://35.154.205.244:3000/purchase/updatetransactionstatusSuccess",
         {
           order_id: options.order_id,
           payment_id: response.razorpay_payment_id,
@@ -264,7 +264,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
   rzp1.on("payment.failed", async function (response) {
     console.log(response);
     await axios.post(
-      "http://43.205.212.2:3001/purchase/updatetransactionstatusFail",
+      "http://35.154.205.244:3000/purchase/updatetransactionstatusFail",
       {
         order_id: options.order_id,
       },
