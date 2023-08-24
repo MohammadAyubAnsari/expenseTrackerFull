@@ -9,7 +9,7 @@ async function login(event) {
     document.getElementById("Password").value = "";
 
     const response = await axios.post(
-      "http://35.154.205.244:3000/user/login",
+      "http://3.110.142.126:3000/user/login",
       loginDetails
     );
     console.log(response.data.message);
